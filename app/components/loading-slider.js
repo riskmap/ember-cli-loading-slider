@@ -40,6 +40,9 @@ export default Component.extend({
   },
 
   willDestroy() {
+    
+    if (isFastBoot()) { return; }
+    
     run.once(this, function() {
       this.get('loadingSlider').off('startLoading', this, this._startLoading);
       this.get('loadingSlider').off('endLoading', this, this._endLoading);
